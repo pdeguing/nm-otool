@@ -1,23 +1,40 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/01/02 11:13:34 by pdeguing          #+#    #+#              #
+#    Updated: 2019/01/02 11:32:26 by pdeguing         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME_NM		= ft_nm
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-INCLUDES	= -I ./includes -I ./libft/includes
-SRCS		:= $(addprefix $(SRCDIR)/, $(ALL))
+
+LIBFT		= libft/libft.a
+INCLUDES	= -I ./includes/ -I./libft/includes
 
 SRCDIRNM	= srcs/
-SRCSNM		= nm.c
-OBJSNM		= $(addprefix $(SRCDIRNM), $(SRCSNM:.c=.o))
+SRCSNM		= nm.c main.c
 
 all: $(NAME_NM)
 
-$(NAME_NM): $(OBJSNM)
-		@$(CC) $(CFLAGS) -o $(NAME_NM) $(INCLUDES) $(OBJSNM)
+$(LIBFT):
+	@cd libft/ && make
+
+$(NAME_NM): $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME_NM) $(INCLUDES) $(LIBFT) $(addprefix $(SRCDIRNM), $(SRCSNM))
 
 clean:
-		@/bin/rm -f $(OBJSNM)
+	@/bin/rm -f $(OBJSNM)
+	@cd libft/ && make clean
 
 fclean: clean
-		@/bin/rm -f $(NAME_NM)
+	@/bin/rm -f $(NAME_NM)
+	@cd libft/ && make fclean
 
 re: fclean all
 
