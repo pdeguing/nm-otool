@@ -6,7 +6,7 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 11:04:01 by pdeguing          #+#    #+#             */
-/*   Updated: 2019/01/02 11:53:35 by pdeguing         ###   ########.fr       */
+/*   Updated: 2019/01/02 12:23:26 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	load_file(char *filename)
 
 	if ((fd = open(filename, O_RDONLY)) < 0)
 	{
-		ft_putendl_fd("open failed", 2);
+		ft_putstr_fd(filename, 2);
+		ft_putendl_fd(": unvalid argument", 2);
 		return ;
 	}
 	if (fstat(fd, &buf) < 0)
@@ -41,15 +42,15 @@ static void	load_file(char *filename)
 int		main(int ac, char **av)
 {
 	if (ac < 2)
+		load_file("a.out");
+	else
 	{
-		ft_putendl("");
-		return (EXIT_FAILURE);
-	}
-	av++;
-	while (*av)
-	{
-		load_file(*av);
 		av++;
+		while (*av)
+		{
+			load_file(*av);
+			av++;
+		}
 	}
 	return (EXIT_SUCCESS);
 }

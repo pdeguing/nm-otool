@@ -6,7 +6,7 @@
 #    By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/02 11:13:34 by pdeguing          #+#    #+#              #
-#    Updated: 2019/01/02 11:32:26 by pdeguing         ###   ########.fr        #
+#    Updated: 2019/01/02 12:31:44 by pdeguing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT		= libft/libft.a
 INCLUDES	= -I ./includes/ -I./libft/includes
 
 SRCDIRNM	= srcs/
-SRCSNM		= nm.c main.c
+SRCSNM		= nm.c main.c output.c
 
 all: $(NAME_NM)
 
