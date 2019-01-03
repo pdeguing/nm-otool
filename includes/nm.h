@@ -6,7 +6,7 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 11:08:56 by pdeguing          #+#    #+#             */
-/*   Updated: 2019/01/03 09:04:55 by pdeguing         ###   ########.fr       */
+/*   Updated: 2019/01/03 10:50:40 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,17 @@
 # define IS_UNDF(a)		((a & N_TYPE) == N_UNDF)
 # define IS_EXT(a)		((a & N_EXT))
 
-void				nm(void *file);
+typedef struct s_symtab		t_symtab;
 
-void				print_output(int nsyms, int symoff, int stroff, void *ptr);
+struct						s_symtab
+{
+	uint64_t				symvalue;
+	char					symchar;
+	char					*symstr;
+};
+
+void				nm(void *ptr);
+
+void				symtab_dump(int nsyms, int symoff, int stroff, void *ptr);
 
 #endif
