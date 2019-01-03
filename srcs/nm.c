@@ -6,7 +6,7 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 11:03:14 by pdeguing          #+#    #+#             */
-/*   Updated: 2019/01/02 15:57:54 by pdeguing         ###   ########.fr       */
+/*   Updated: 2019/01/03 09:04:53 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		handle_64(void *ptr)
 		if (lc->cmd == LC_SYMTAB)
 		{
 			sym = (struct symtab_command *)lc;
-			print_output(sym->nsyms, sym->symoff, sym->stroff, ptr);
+			(void)print_output(sym->nsyms, sym->symoff, sym->stroff, ptr);
 			break ;
 		}
 		lc = (void *)lc + lc->cmdsize;
@@ -46,12 +46,11 @@ void			nm(void *ptr)
 	ft_printf("magic = %#x\n", magic);
 	if (magic == MH_MAGIC_64)
 	{
-		ft_putendl("normal64");
-		handle_64(ptr);
+		(void)handle_64(ptr);
 	}
 	else if (magic == MH_CIGAM_64)
 	{
-		ft_putendl("swap64");
+		(void)ft_putendl("swap64");
 	}
 	else if (magic == MH_MAGIC)
 		ft_putendl("normal32");
