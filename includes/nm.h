@@ -6,7 +6,7 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 11:08:56 by pdeguing          #+#    #+#             */
-/*   Updated: 2019/01/03 10:50:40 by pdeguing         ###   ########.fr       */
+/*   Updated: 2019/01/04 09:20:45 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ struct						s_symtab
 	char					*symstr;
 };
 
-void				nm(void *ptr);
+void						symtab_dump(uint32_t nsyms, uint32_t symoff, uint32_t stroff, void *ptr);
 
-void				symtab_dump(int nsyms, int symoff, int stroff, void *ptr);
+int							is_macho(void *ptr);
+
+void						nm(void *ptr);
+
 
 #endif
