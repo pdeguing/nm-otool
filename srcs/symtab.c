@@ -6,27 +6,11 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 10:21:27 by pdeguing          #+#    #+#             */
-/*   Updated: 2019/01/04 09:46:33 by pdeguing         ###   ########.fr       */
+/*   Updated: 2019/01/04 10:02:37 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <nm.h>
-
-static char		get_symchar(uint8_t ntype)
-{
-	char		symchar;
-
-	if (ntype & N_STAB)
-		return (-1);
-	if (IS_UNDF(ntype))
-		symchar = 'u';
-	else
-		symchar = 't';
-	if (IS_EXT(ntype))
-		symchar = ft_toupper(symchar);
-	return (symchar);
-
-}
 
 static void		print_entry(uint64_t symvalue, char symchar, char *symstr)
 {
